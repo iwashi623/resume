@@ -8,16 +8,16 @@
 
 ## スキル
 ### 言語
-PHP|Ruby|Go|Dart
+PHP | Ruby | Go | Dart
 
 ### フレームワーク、Middleware、Hardware
-Laravel|Ruby on Rails|Flutter|MySQL|PostgreSQL
+Laravel | Ruby on Rails | Flutter | MySQL | PostgreSQL
 
 ### AWS
-EC2|ECS|Fargate|ECR|Lambda|ALB|VPC|VPC Peering|IAM|CloudFront|Route53|RDS(MySQL|PostgreSQL)|S3|ElastiCache(Redis)|SQS|SNS|Chatbot|Parameter Store|Glue|EventBridge|CloudWatch
+EC2 | ECS | Fargate | ECR | Lambda | ALB | VPC | VPC Peering | IAM | CloudFront | Route53 | RDS(MySQL | PostgreSQL) | S3 | ElastiCache(Redis) | SQS | SNS | Chatbot | Parameter Store | Glue | EventBridge | CloudWatch
 
 ### その他
-GitHub|GitHub Actions|Terraform|NewRelic|Fastly|ecspresso|lambroll
+GitHub | GitHub Actions | Terraform | NewRelic | Fastly | ecspresso | lambroll
 
 ## 言語
 - 日本語
@@ -79,7 +79,7 @@ GitHub|GitHub Actions|Terraform|NewRelic|Fastly|ecspresso|lambroll
  - すでに古いドメインをブックマークしているユーザーがいることも考慮に入れて､古いエンドポイントは消さず､内部処理で新ドメインのエンドポイントへリダイレクトさせる設計になっている｡
 
 #### 使用技術
-PHP|Laravel|ECS|ALB|NewRelic|Terraform 
+PHP | Laravel | ECS | ALB | NewRelic | Terraform 
 
 ### ECSのマルチステージ環境開発(2022/03頃)
 #### 公開エントリ
@@ -88,13 +88,12 @@ PHP|Laravel|ECS|ALB|NewRelic|Terraform
 
 #### 概要
 担当していたサービスの"検証環境が一つしかない"という状況が､チームの開発速度を上げる上でのボトルネックになっていた｡
-
 そのため､誰でも自由にそれぞれがデプロイできる環境の作成をして､チームの開発速度向上に寄与した｡
  - 設計は既存環境をECSとほぼ同じ構成で､検証環境のサブドメインとして各人の環境がデプロイできるようにした｡
 
 結果として､複数のプロジェクトの並行実施やリファクタリングデーの定期実行､デザイナーへの確認などがスムーズに行えるようになった｡
 #### 使用技術
-ECS|ECR|ALB|ACM|ALB|CloudFront|GitHub Actions|ecspresso|Terraform
+ECS | ECR | ALB | ACM | ALB | CloudFront | GitHub Actions | ecspresso | Terraform
 
 ### BigQueryをつかった社内のデータ基盤整理(2021/11-2022/01頃)
 #### 公開エントリ
@@ -106,7 +105,7 @@ ECS|ECR|ALB|ACM|ALB|CloudFront|GitHub Actions|ecspresso|Terraform
    - エクスポートするにあたって､秘匿情報などマスキングをするべきデータがあったため[AWS Glue](https://aws.amazon.com/jp/glue/)を使用したETL処理を行った｡
  - ただBigQueryでデータを閲覧できるようにしただけでは､ビジネスサイドの人がデータを見るのには障壁がある(クエリを書く必要があるため)｡そのため､Google DataStudioとBigQueryの定期実行Jobを使用して､毎日更新されるダッシュボードを作成した｡これにより､ビジネスサイドの方でもかんたんに毎日の配信件数などを把握できる様になった｡
 #### 使用技術
-Python|Go|Lambda|lambroll|S3|KMS|Aurora MySQL|Glue|EventBridge|CloudWatch Event|CloudWatch|BigQuery
+Python | Go | Lambda | lambroll | S3 | KMS | Aurora MySQL | Glue | EventBridge | CloudWatch Event | CloudWatch | BigQuery
 
 ## 課外活動
  - PHPカンファレンス2022 スポンサーLT登壇
