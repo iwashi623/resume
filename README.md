@@ -65,7 +65,7 @@ GitHub|GitHub Actions|Terraform|NewRelic|Fastly|ecspresso|lambroll
  - [公開予定記事あり]()
 
 #### 概要
-担当サービスが変に分割されており､また分割された片方がもう一方と全く違うFWを採用していることや､開発組織のエンジニア以外にその事実を知っていることが少ないことなどが原因となり､開発速度が出しづらい環境を抱えていた｡また､社内のサービスと一つだけ別ドメインを使用していることでCDNの設定やCORSの設定を独自で行う必要があり､少ないエンジニアリソースが無駄になっている麺もあった｡
+担当サービスが変に分割されており､また分割された片方がもう一方と全く違うFWを採用していることや､開発組織のエンジニア以外にその事実を知っていることが少ないことなどが原因となり､開発速度が出しづらい環境を抱えていた｡また､社内のサービスと一つだけ別ドメインを使用していることでCDNの設定やCORSの設定を独自で行う必要があり､少ないエンジニアリソースが無駄になっている面もあった｡
 
 そのような状況を打開するために､分割されたサービスの統合や､ドメイン変更などを行い､以後の変更や機能開発で余計な工数がかからないようにした｡
 
@@ -83,8 +83,8 @@ PHP|Laravel|ECS|ALB|NewRelic|Terraform
 
 ### ECSのマルチステージ環境開発(2022/03頃)
 #### 公開エントリ
-  - [ECSでマルチステージング環境を実現した設計と実装](https://developers.prtimes.jp/2022/04/22/ecs-multistg-deploy/)
-  - [CloudFrontのディストリビューションを分割して、マルチステージング環境をさらに便利にした話](https://developers.prtimes.jp/2022/11/09/divide_cloudfront_distribution_for_multi_staging/)
+ - [ECSでマルチステージング環境を実現した設計と実装](https://developers.prtimes.jp/2022/04/22/ecs-multistg-deploy/)
+ - [CloudFrontのディストリビューションを分割して、マルチステージング環境をさらに便利にした話](https://developers.prtimes.jp/2022/11/09/divide_cloudfront_distribution_for_multi_staging/)
 
 #### 概要
 担当していたサービスの"検証環境が一つしかない"という状況が､チームの開発速度を上げる上でのボトルネックになっていた｡
@@ -102,16 +102,16 @@ ECS|ECR|ALB|ACM|ALB|CloudFront|GitHub Actions|ecspresso|Terraform
 ](https://developers.prtimes.jp/2022/03/02/aurora_to_bigquery/)
 #### 概要
  - AWS上にデプロイされているRDS(Aurora MySQL)のデータを､BigQueryにエクスポートした｡
-  - スナップショットのS3への転送にはLambdaでデプロイしたGoアプリケーションを使用した｡
-  - エクスポートするにあたって､秘匿情報などマスキングをするべきデータがあったため[AWS Glue](https://aws.amazon.com/jp/glue/)を使用したETL処理を行った｡
- - ただBigQueryでデータを閲覧しただけでは､ビジネスサイドの人がデータを見るのには障壁がある(クエリを書く必要があるため)｡そのため､Google DataStudioとBigQueryの定期実行Jobを使用して､毎日更新されるダッシュボードを作成した｡これにより､ビジネスサイドの方でもかんたんに毎日の配信件数などを把握できる様になった｡
+   - スナップショットのS3への転送にはLambdaでデプロイしたGoアプリケーションを使用した｡
+   - エクスポートするにあたって､秘匿情報などマスキングをするべきデータがあったため[AWS Glue](https://aws.amazon.com/jp/glue/)を使用したETL処理を行った｡
+ - ただBigQueryでデータを閲覧できるようにしただけでは､ビジネスサイドの人がデータを見るのには障壁がある(クエリを書く必要があるため)｡そのため､Google DataStudioとBigQueryの定期実行Jobを使用して､毎日更新されるダッシュボードを作成した｡これにより､ビジネスサイドの方でもかんたんに毎日の配信件数などを把握できる様になった｡
 #### 使用技術
-Python|Go|Lambda|lambroll|S3|KMS|Aurora MySQL|Glue|EventBridge|CloudWatch Event|CloudWatch
+Python|Go|Lambda|lambroll|S3|KMS|Aurora MySQL|Glue|EventBridge|CloudWatch Event|CloudWatch|BigQuery
 
 ## 課外活動
  - PHPカンファレンス2022 スポンサーLT登壇
-  - [登壇資料](https://speakerdeck.com/sardineta23/aa-wo-ranoecs-1)
-  - [映像](https://www.youtube.com/watch?v=wFjGeFafagU)
+   - [登壇資料](https://speakerdeck.com/sardineta23/aa-wo-ranoecs-1)
+   - [映像](https://www.youtube.com/watch?v=wFjGeFafagU)
 
 
 ### 社外プロジェクト
