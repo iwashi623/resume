@@ -17,7 +17,7 @@ Laravel|Ruby on Rails|Flutter|MySQL|PostgreSQL
 EC2|ECS|Fargate|ECR|Lambda|ALB|VPC|VPC Peering|IAM|CloudFront|Route53|RDS(MySQL|PostgreSQL)|S3|ElastiCache(Redis)|SQS|SNS|Chatbot|Parameter Store|Glue|EventBridge|CloudWatch
 
 ### その他
-GitHub|GitHub Actions|Terraform|NewRelic|Fastly
+GitHub|GitHub Actions|Terraform|NewRelic|Fastly|ecspresso|lambroll
 
 ## 言語
 - 日本語
@@ -59,20 +59,65 @@ GitHub|GitHub Actions|Terraform|NewRelic|Fastly
 また､積極的な情報発信を会社が運営しているブログ上で行いました｡インターネットに知識を還元することはもちろん､自分自身や会社の開発組織の価値向上につながると肌で感じることができました｡
 
 ## 開発実績
+### アプリケーションのリアーキテクチャと運用(〜現在)
+#### 公開エントリ
+ - [PR TIMES STORYを別リポジトリに移植した話](https://developers.prtimes.jp/2022/10/05/transportation_story_program/)
+ - [公開予定記事あり]()
+
+#### 概要
+担当サービスが変に分割されており､また分割された片方がもう一方と全く違うFWを採用していることや､開発組織のエンジニア以外にその事実を知っていることが少ないことなどが原因となり､開発速度が出しづらい環境を抱えていた｡また､社内のサービスと一つだけ別ドメインを使用していることでCDNの設定やCORSの設定を独自で行う必要があり､少ないエンジニアリソースが無駄になっている麺もあった｡
+
+そのような状況を打開するために､分割されたサービスの統合や､ドメイン変更などを行い､以後の変更や機能開発で余計な工数がかからないようにした｡
+
+アプリケーション移植プロジェクト
+ - 分割されたサービスの統合では､独自FWで管理されているコードを､Laravelに移植した｡基本は同じPHPなので動作したが､deprecatedになっている関数や無意味なリクエストをしているところもあったため､慎重にTestを書きながら1ページずつWebアプリケーションを移植する手法をとった｡
+ - 1ページずつ移植するために､ALBのホストベース･パスベースのルーティング機能を使用した｡ページごとにリスナールールを書き足していくことにより実現できた｡また､既存ECSにリクエストが流れてくるため､NewRelicのエージェントを用いたECSの監視も追加した｡
+
+ドメイン変更プロジェクト
+ - 基本はLaravelのルーティングファイルを変更して､移植先ドメインで使用するパスへリクエストが来たら､対応するControllerを呼び出すようにした｡これだけであたらしいエンドポイントへも今まで通りの形でレスポンスを返せるようになる｡
+ - ただし､エンドポイントの名前が変更されることもあり､動作はするがリポジトリのアーキテクチャ上あるべき場所に無いコードが大量に発生した｡それらは､リファクタリングデーで一気に移植することで地道に正常状態へ戻していった｡
+ - すでに古いドメインをブックマークしているユーザーがいることも考慮に入れて､古いエンドポイントは消さず､内部処理で新ドメインのエンドポイントへリダイレクトさせる設計になっている｡
+
+#### 使用技術
+PHP|Laravel|ECS|ALB|NewRelic|Terraform 
+
+### ECSのマルチステージ環境開発(2022/03頃)
+#### 公開エントリ
+  - [ECSでマルチステージング環境を実現した設計と実装](https://developers.prtimes.jp/2022/04/22/ecs-multistg-deploy/)
+  - [CloudFrontのディストリビューションを分割して、マルチステージング環境をさらに便利にした話](https://developers.prtimes.jp/2022/11/09/divide_cloudfront_distribution_for_multi_staging/)
+
+#### 概要
+担当していたサービスの"検証環境が一つしかない"という状況が､チームの開発速度を上げる上でのボトルネックになっていた｡
+
+そのため､誰でも自由にそれぞれがデプロイできる環境の作成をして､チームの開発速度向上に寄与した｡
+ - 設計は既存環境をECSとほぼ同じ構成で､検証環境のサブドメインとして各人の環境がデプロイできるようにした｡
+
+結果として､複数のプロジェクトの並行実施やリファクタリングデーの定期実行､デザイナーへの確認などがスムーズに行えるようになった｡
+#### 使用技術
+ECS|ECR|ALB|ACM|ALB|CloudFront|GitHub Actions|ecspresso|Terraform
+
+### BigQueryをつかった社内のデータ基盤整理(2021/11-2022/01頃)
+#### 公開エントリ
+ - [AuroraからBigQueryへデータ転送する際のシステム構成
+](https://developers.prtimes.jp/2022/03/02/aurora_to_bigquery/)
+#### 概要
+ - AWS上にデプロイされているRDS(Aurora MySQL)のデータを､BigQueryにエクスポートした｡
+  - スナップショットのS3への転送にはLambdaでデプロイしたGoアプリケーションを使用した｡
+  - エクスポートするにあたって､秘匿情報などマスキングをするべきデータがあったため[AWS Glue](https://aws.amazon.com/jp/glue/)を使用したETL処理を行った｡
+ - ただBigQueryでデータを閲覧しただけでは､ビジネスサイドの人がデータを見るのには障壁がある(クエリを書く必要があるため)｡そのため､Google DataStudioとBigQueryの定期実行Jobを使用して､毎日更新されるダッシュボードを作成した｡これにより､ビジネスサイドの方でもかんたんに毎日の配信件数などを把握できる様になった｡
+#### 使用技術
+Python|Go|Lambda|lambroll|S3|KMS|Aurora MySQL|Glue|EventBridge|CloudWatch Event|CloudWatch
 
 ## 課外活動
+ - PHPカンファレンス2022 スポンサーLT登壇
+  - [登壇資料](https://speakerdeck.com/sardineta23/aa-wo-ranoecs-1)
+  - [映像](https://www.youtube.com/watch?v=wFjGeFafagU)
+
 
 ### 社外プロジェクト
 
 ### 過去の登壇資料
-- [Speaker Deck](Speaker Deckの自分の資料のページとか)
-
-### 受賞歴
-- [イベント名と受賞した賞](イベントのランディングページのリンクや、結果がわかる記事など)
-
-### 執筆歴
-- [Qiita](Qiitaの自分のプロフィールのリンクとか)
-- [ネットメディアの記事](記事のリンクとか)
+- [Speaker Deck](https://speakerdeck.com/sardineta23)
 
 ## 将来どうなりたいか
 ### ○年後になりたい姿
@@ -80,5 +125,3 @@ GitHub|GitHub Actions|Terraform|NewRelic|Fastly
 
 ### 現在となりたい姿とのギャップ
 ### なりたい姿を達成するために、取り組みたいこと
-
-## その他（相談したいこと、書ききれなかったことなど）
