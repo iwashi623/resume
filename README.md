@@ -59,7 +59,7 @@ GitHub | GitHub Actions | Terraform | NewRelic | Fastly | ecspresso | lambroll
 また､積極的な情報発信を会社が運営しているブログ上で行いました｡インターネットに知識を還元することはもちろん､自分自身や会社の開発組織の価値向上につながると肌で感じることができました｡
 
 ## 開発実績
-### アプリケーションのリアーキテクチャと運用(〜現在)
+### Webアプリケーションのリアーキテクチャと運用(〜現在)
 #### 公開エントリ
  - [PR TIMES STORYを別リポジトリに移植した話](https://developers.prtimes.jp/2022/10/05/transportation_story_program/)
  - [公開予定記事あり]()
@@ -78,6 +78,8 @@ GitHub | GitHub Actions | Terraform | NewRelic | Fastly | ecspresso | lambroll
  - ただし､エンドポイントの名前が変更されることもあり､動作はするがリポジトリのアーキテクチャ上あるべき場所に無いコードが大量に発生した｡それらは､リファクタリングデーで一気に移植することで地道に正常状態へ戻していった｡
  - すでに古いドメインをブックマークしているユーザーがいることも考慮に入れて､古いエンドポイントは消さず､内部処理で新ドメインのエンドポイントへリダイレクトさせる設計になっている｡
 
+Desing Docを実装前に丁寧に書くことで､スコープ内･外のことやリリースの方法(1ページずつリリースするなど)を予めきめて走り切ることができた｡
+
 #### 使用技術
 PHP | Laravel | ECS | ALB | NewRelic | Terraform 
 
@@ -87,25 +89,40 @@ PHP | Laravel | ECS | ALB | NewRelic | Terraform
  - [CloudFrontのディストリビューションを分割して、マルチステージング環境をさらに便利にした話](https://developers.prtimes.jp/2022/11/09/divide_cloudfront_distribution_for_multi_staging/)
 
 #### 概要
-担当していたサービスの"検証環境が一つしかない"という状況が､チームの開発速度を上げる上でのボトルネックになっていた｡
-そのため､誰でも自由にそれぞれがデプロイできる環境の作成をして､チームの開発速度向上に寄与した｡
+担当していたサービスの"検証環境が一つしかない"という状況だった｡この状況では､チームが大きくなった際に並行でプロジェクトを動かしていく際にQA確認などですべての開発が詰まることは明白であった｡実際､開発チームが少人数の状況でも､QAやエンジニアの検証作業が開発の流れのボトルネックになっていた｡
+
+そのため､誰でも自由にそれぞれがデプロイできる環境の作成をして､チームの開発速度向上に貢献した｡また､社内の別ECSサービスにも取り入れられている仕組みとなり､別チームが導入する際は実装のレビュアーやアドバイスなども行った｡
  - 設計は既存環境をECSとほぼ同じ構成で､検証環境のサブドメインとして各人の環境がデプロイできるようにした｡
+   - 仮に検証環境のドメインが`example.com`だとすると､`hoge.example.com`のドメインで各人が自由な環境をデプロイすることができる｡
+ - デプロイはGitHub Actionsを使用して､[ecspresso](https://github.com/kayac/ecspresso)コマンドを使うことによって実現している｡
+ - DBまわりは他のステージング環境と共用している｡これはステージング毎にDBを分けると「起動･停止に時間がかかること」や「コストのかかる割に､それに見合うリターンが現状見込めないこと」に起因している｡
+   - 実現しようと思ったら､ecspressoのタスク定義ファイルを､GitHub Actionsのinputの値をもとにデプロイするECSのDBHostの値を書き換える､もしくはアプリケーションにDBの参照先を変更する管理画面に入れるなどして対応予定｡
+ - ECS以外のAWSリソースはTerrafromを使って作成した｡
+   - ECSやALB､Security Groupの設定などは初めて一人で行ったが､公式ドキュメントやAWS認定資格の際に勉強した知識を活かして実装を進めた｡
+   - 「ALBには2つのドメインの証明書を関連付けられる」や「CloudFrontではホストベースのルーティングは不可」などの知見を実装しながら学んでいった｡
 
 結果として､複数のプロジェクトの並行実施やリファクタリングデーの定期実行､デザイナーへの確認などがスムーズに行えるようになった｡
 #### 使用技術
 ECS | ECR | ALB | ACM | ALB | CloudFront | GitHub Actions | ecspresso | Terraform
 
-### BigQueryをつかった社内のデータ基盤整理(2021/11-2022/01頃)
+### BigQueryをつかった社内のデータ分析基盤整理(2021/11-2022/01頃)
 #### 公開エントリ
  - [AuroraからBigQueryへデータ転送する際のシステム構成
 ](https://developers.prtimes.jp/2022/03/02/aurora_to_bigquery/)
 #### 概要
- - AWS上にデプロイされているRDS(Aurora MySQL)のデータを､BigQueryにエクスポートした｡
-   - スナップショットのS3への転送にはLambdaでデプロイしたGoアプリケーションを使用した｡
-   - エクスポートするにあたって､秘匿情報などマスキングをするべきデータがあったため[AWS Glue](https://aws.amazon.com/jp/glue/)を使用したETL処理を行った｡
+ - データをBigQueryにエクスポートするにあたって転送すべきではないデータも含まれていた｡
+   - サービスの性質上､公開前情報なども扱うため安易にDBのデータをそのままBigQueryに転送はできない｡
+   - 秘匿情報などマスキングや転送データから削除するべきデータは､[AWS Glue](https://aws.amazon.com/jp/glue/)を使用したETL処理を行った｡Glueを使って変換処理を終えたファイルをS3に書き出し､そのファイルをBigQueryに転送することで要件を満たした｡
+ - Aurora MySQLのsnapshotの機能を使用して､リードレプリカなどを使わずにデータをGlueで読み込む
+   - Glueの処理用にAuroraMySQLのリードレプリカを新たにたてる方法もあったが､その方法ではDBサーバーの料金が無駄になると考えた｡
+     - そのため､AuroraのSnapshotをつかって､Glueでデータを読み込む手法を選定した｡
+   - スナップショットのS3への転送にはLambdaでデプロイしたGoアプリケーションを使用した｡[ブログ](https://developers.prtimes.jp/2022/03/02/aurora_to_bigquery)に実際がコード載っている｡
+     - データの取得→変換→転送の処理を完全に自動化するために､EvendbridgeやBigQueryの定期実行Jobを使用した｡
  - ただBigQueryでデータを閲覧できるようにしただけでは､ビジネスサイドの人がデータを見るのには障壁がある(クエリを書く必要があるため)｡そのため､Google DataStudioとBigQueryの定期実行Jobを使用して､毎日更新されるダッシュボードを作成した｡これにより､ビジネスサイドの方でもかんたんに毎日の配信件数などを把握できる様になった｡
+
+実際にビジネスサイドの人にどういったデータがほしいか(Ex: 毎日の新規投稿数､週ごとの新規投稿企業数など)をヒアリングして､ダッシュボードに日々アップデートをかけていった｡
 #### 使用技術
-Python | Go | Lambda | lambroll | S3 | KMS | Aurora MySQL | Glue | EventBridge | CloudWatch Event | CloudWatch | BigQuery
+Python | Go | Lambda | lambroll | S3 | KMS | Aurora MySQL | Glue | EventBridge | CloudWatch | BigQuery
 
 ## 課外活動
  - PHPカンファレンス2022 スポンサーLT登壇
@@ -114,13 +131,14 @@ Python | Go | Lambda | lambroll | S3 | KMS | Aurora MySQL | Glue | EventBridge |
 
 
 ### 社外プロジェクト
+特になし
 
 ### 過去の登壇資料
 - [Speaker Deck](https://speakerdeck.com/sardineta23)
 
-## 将来どうなりたいか
+<!-- ## 将来どうなりたいか
 ### ○年後になりたい姿
 ### ○年後になりたい姿
 
 ### 現在となりたい姿とのギャップ
-### なりたい姿を達成するために、取り組みたいこと
+### なりたい姿を達成するために、取り組みたいこと -->
