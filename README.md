@@ -129,12 +129,17 @@ Python | Go | Lambda | lambroll | S3 | KMS | Aurora MySQL | Glue | EventBridge |
    - [登壇資料](https://speakerdeck.com/sardineta23/aa-wo-ranoecs-1)
    - [映像](https://www.youtube.com/watch?v=wFjGeFafagU)
 
-
 ### 社外プロジェクト
 特になし
 
 ### 過去の登壇資料
 - [Speaker Deck](https://speakerdeck.com/sardineta23)
+
+## Licence
+ - AWS Certified Solutions Architect – Associate（2021/08）
+ - AWS Certified Developer - Associate（2022/03）
+ - AWS Certified SysOps Administrator - Associate（2022/08）
+ - AWS Certified Solutions Architect - Professional（2022/10）
 
 <!-- ## 将来どうなりたいか
 ### ○年後になりたい姿
