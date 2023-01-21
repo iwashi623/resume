@@ -2,7 +2,7 @@
 
 ## 基本情報
 - Name: 岩下 拳勝
-- Twitter: [@SardineTa23](https://twitter.com/SardineTa23)
+- Twitter: [@iwashi623](https://twitter.com/iwashi623)
 - Wantedly https://www.wantedly.com/id/kensho_iwashita
 - PR TIMES開発者プログ [公開エントリ](https://developers.prtimes.jp/author/kenshoiwashita/)
 
@@ -126,14 +126,14 @@ Python | Go | Lambda | lambroll | S3 | KMS | Aurora MySQL | Glue | EventBridge |
 
 ## 課外活動
  - PHPカンファレンス2022 スポンサーLT登壇
-   - [登壇資料](https://speakerdeck.com/sardineta23/aa-wo-ranoecs-1)
+   - [登壇資料](https://speakerdeck.com/iwashi623/aa-wo-ranoecs-1)
    - [映像](https://www.youtube.com/watch?v=wFjGeFafagU)
 
 ### 社外プロジェクト
 特になし
 
 ### 過去の登壇資料
-- [Speaker Deck](https://speakerdeck.com/sardineta23)
+- [Speaker Deck](https://speakerdeck.com/iwashi623)
 
 ## Licence
  - AWS Certified Solutions Architect – Associate（2021/08）
