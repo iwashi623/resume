@@ -3,21 +3,31 @@
 ## 基本情報
 - Name: 岩下 拳勝
 - Twitter: [@iwashi623](https://twitter.com/iwashi623)
-- Wantedly https://www.wantedly.com/id/kensho_iwashita
 - PR TIMES開発者プログ [公開エントリ](https://developers.prtimes.jp/author/kenshoiwashita/)
+- [Wantedly](https://www.wantedly.com/id/kensho_iwashita)
+- [Speaker Deck](https://speakerdeck.com/iwashi623)
+- [Qiita](https://qiita.com/iwashi623)
+- [Zenn](https://zenn.dev/iwashi623)
+- [note](https://note.com/iwashi623)
 
 ## スキル
 ### 言語
-PHP | Ruby | Go | Dart
+PHP | Ruby | Go
 
 ### フレームワーク、Middleware、Hardware
-Laravel | Ruby on Rails | Flutter | MySQL | PostgreSQL
+Laravel | Ruby on Rails | MySQL | PostgreSQL | nginx
 
 ### AWS
-EC2 | ECS | Fargate | ECR | Lambda | ALB | VPC | VPC Peering | IAM | CloudFront | Route53 | RDS(MySQL | PostgreSQL) | S3 | ElastiCache(Redis) | SQS | SNS | Chatbot | Parameter Store | Glue | EventBridge | CloudWatch
+EC2 | ECS | Fargate | ECR | Lambda | ALB | VPC | VPC Peering | IAM | CloudFront | Route53 | RDS(MySQL | PostgreSQL) | Aurora | S3 | ElastiCache(Redis) | SQS | SNS | Chatbot | Parameter Store | Glue | EventBridge | CloudWatch | DirectConnect
 
 ### その他
 GitHub | GitHub Actions | Terraform | NewRelic | Fastly | ecspresso | lambroll
+
+### ライセンス
+ - AWS Certified Solutions Architect – Associate（2021/08）
+ - AWS Certified Developer - Associate（2022/03）
+ - AWS Certified SysOps Administrator - Associate（2022/08）
+ - AWS Certified Solutions Architect - Professional（2022/10）
 
 ## 言語
 - 日本語
@@ -125,25 +135,29 @@ ECS | ECR | ALB | ACM | ALB | CloudFront | GitHub Actions | ecspresso | Terrafor
 Python | Go | Lambda | lambroll | S3 | KMS | Aurora MySQL | Glue | EventBridge | CloudWatch | BigQuery
 
 ## 課外活動
+### 登壇など
  - PHPカンファレンス2022 スポンサーLT登壇
    - [登壇資料](https://speakerdeck.com/iwashi623/aa-wo-ranoecs-1)
    - [映像](https://www.youtube.com/watch?v=wFjGeFafagU)
 
-### 社外プロジェクト
+### 社外プロジェクト(OSSなど)
 特になし
 
-### 過去の登壇資料
-- [Speaker Deck](https://speakerdeck.com/iwashi623)
+## 個人開発
+### gjobctl
+ - リポジトリ: https://github.com/iwashi623/gjobctl
+ - 機能: [README](https://github.com/iwashi623/gjobctl/blob/main/README.md)
+ - 概要: Glue Jobを作成･管理をするときにほしいAPIをラップしたツール｡
 
-## Licence
- - AWS Certified Solutions Architect – Associate（2021/08）
- - AWS Certified Developer - Associate（2022/03）
- - AWS Certified SysOps Administrator - Associate（2022/08）
- - AWS Certified Solutions Architect - Professional（2022/10）
+#### 作成背景
+1. スクリプトをリポジトリで管理したいこと
+2. Jobをコンソールから作成するのが手間だったこと
+があげられる｡
 
-<!-- ## 将来どうなりたいか
-### ○年後になりたい姿
-### ○年後になりたい姿
+1は自信が使用していたGlue Jobのスクリプトがリポジトリ管理されておらず､スクリプトにデバッグのために少しだけ編集を加えたり･戻したりしたいときに､現状の実装が何を意図して実装されたのかわからなくなることが多かった｡
 
-### 現在となりたい姿とのギャップ
-### なりたい姿を達成するために、取り組みたいこと -->
+これはGitHubのリポジトリでスクリプトを管理することで解決できる｡GitHubでスクリプトを管理するようになると､当然GitHub Actionsを使用して自動デプロイもできたら嬉しいという要望も出てくる｡これだけであればGitHub Actionsで`aws s3`コマンドを叩けば実現できる｡
+
+ただ､別件で2も常々思っていた｡ソースデータのテーブル･カラムが追加されるたびに､AWSのコンソールに行って同じような設定のJobをポチポチ作るのも､一回一回はそれほど手間でもないが積み重なると辛い｡
+
+そこで､スクリプトのデプロイとJobの作成･更新ができるツールを作成した｡Jobの管理はTerraform･スクリプトは`aws s3`コマンドで行うもの悪くないかと思ったが､スクリプトファイルとJobの設定ファイルを近く(同じリポジトリにおける)というのも運用面のメリットかと思う｡
