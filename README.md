@@ -69,6 +69,10 @@ GitHub | GitHub Actions | Terraform | NewRelic | Fastly | ecspresso | lambroll
 また､積極的な情報発信を会社が運営しているブログ上で行いました｡インターネットに知識を還元することはもちろん､自分自身や会社の開発組織の価値向上につながると肌で感じることができました｡
 
 ## 開発実績
+### Fastly lmage Optimizerを利用したサムネイル画像配信基盤作成
+#### 概要
+後日追記予定
+
 ### Webアプリケーションのリアーキテクチャと運用(〜現在)
 #### 公開エントリ
  - [PR TIMES STORYを別リポジトリに移植した話](https://developers.prtimes.jp/2022/10/05/transportation_story_program/)
