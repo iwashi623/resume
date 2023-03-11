@@ -15,7 +15,7 @@
 PHP | Ruby | Go
 
 ### フレームワーク、Middleware、Hardware
-Laravel | Ruby on Rails | MySQL | PostgreSQL | nginx
+Laravel | Ruby on Rails | MySQL | PostgreSQL | Nginx
 
 ### AWS
 EC2 | ECS | Fargate | ECR | Lambda | ALB | VPC | VPC Peering | IAM | CloudFront | Route53 | RDS(MySQL | PostgreSQL) | Aurora | S3 | ElastiCache(Redis) | SQS | SNS | Chatbot | Parameter Store | Glue | EventBridge | CloudWatch | DirectConnect
@@ -36,7 +36,7 @@ GitHub | GitHub Actions | Terraform | NewRelic | Fastly | ecspresso | lambroll
   - 読み書きレベル
 
 ## バリューを発揮しやすい業務
- - PHPやRubyを使用したサーバーサイドのWebアプリケーション開発
+ - PHPやRubyを使用したサーバーサイドのWebアプリケーション・API開発
  - CI/CDパイプラインの構築や改善
  - クラウドサービスを使ったアーキテクチャ設計
  - クラウドサービスのインフラ構築･環境のコード化
@@ -48,7 +48,7 @@ GitHub | GitHub Actions | Terraform | NewRelic | Fastly | ecspresso | lambroll
 一方で､型にはまった作業や踏襲されてきた歴史などを無心で重んじるのが苦手で､そういった状況に陥るとバリューの低下やメンタルの不健康を感じます｡
 
 ## 興味・関心
-ソフトウェア開発､とりわけWeb業界は知識の幅が広く､執筆時点で(2023/1 現在)はすべての分野を一通り触ったとは全く言えない状況です｡そのため前述したような性格でも毎日楽しく学習ができています｡エンジニアの業務は十分知的好奇心を刺激されて楽しく働くことができているため､しばらくはエンジニアとしてキャリアを築いていきたいです｡
+ソフトウェア開発､とりわけWeb業界は知識の幅が広く､執筆時点で(2023/3 現在)はすべての分野を一通り触ったとは全く言えない状況です｡そのため前述したような性格でも毎日楽しく学習ができています｡エンジニアの業務は十分知的好奇心を刺激されて楽しく働くことができているため､しばらくはエンジニアとしてキャリアを築いていきたいです｡
 
 エンジニアの中では､これまでのキャリアで主にサーバーサイドやクラウドサービスを利用したインフラ構築を担当してきました｡ただ､そこにこだわりがあるわけではなく､むしろ幅を更に広げていきたいと考えています｡GoやKotlinなどの静的型付け言語やTypeScrip+FWを使ったフロントエンド開発､ネイティブアプリケーション開発にも興味があります｡
 
@@ -60,7 +60,7 @@ GitHub | GitHub Actions | Terraform | NewRelic | Fastly | ecspresso | lambroll
  おもにアプリケーションのリアーキテクチャや開発環境改善､CDNの導入などを担当した｡
  - PR TIMES AWS移行プロジェクトのメンバー｡インフラのコード化や関連サービスのDBの接続先変更(VPC Peering､DirectConnectの設定)を担当｡
 #### 職務の中で学んだことや得られた知識・スキルなど
-技術的な詳細は下記します｡ここではその他の経験を述べます｡
+技術的な内容は下記の開発実績をご参照ください｡ここではその他の経験を述べます｡
 
 チームメンバーは4〜6人の少数チームでしたが、開発リーダーとして工数管理や実装優先度の決定をしていました｡手を動かしてコードを書く以外の主な業務は､ビジネスサイドの要望に対して､開発をすすめるにあたっての要件の切り出しやDesing Docの作成です｡
 
