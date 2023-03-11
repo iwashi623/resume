@@ -74,10 +74,12 @@ GitHub | GitHub Actions | Terraform | NewRelic | Fastly | ecspresso | lambroll
  - [AVIF・WebPでサムネイル画像を配信して､ブラウザでのパフォーマンスを大幅に改善した話](https://developers.prtimes.jp/2023/03/02/use_avif_and_webp_for_story_thumbnail_images/)
 
 #### 概要
-担当サービスでブラウザ表示の際にパフォーマンス上の問題点があった｡主たるボトルネックになっていたのはサムネイル画像がJPEGやPNGといった古い画像フォーマットを使用していたことだった｡
+担当サービスでブラウザ表示の際にパフォーマンス上の問題点があった｡主たるボトルネックになっていたのはサムネイル画像がJPEGやPNGといった古い画像フォーマットを使用していたことだった｡[社内で採用実績のある](https://developers.prtimes.jp/2022/02/24/press_release_image_optimization/)､Fastlyの[Image Optimizer](https://www.fastly.com/jp/products/image-optimization)を使用すれば､こちらのボトルネックは解消できることがわかっていたため導入した｡
+
+また､WebPだけではなくAVIFという更に新しい画像フォーマットも導入して､Fastly Service上でVCLを使って柔軟に画像配信を行える基盤を整えた｡
 
 #### 担当
-Fastly Serviceの作成と設定･Image Optimizerの設定値の決定･PHPコードの修正
+Fastly Serviceの作成と設定･Image Optimizerの設定値の決定･PHPアプリケーションコードの修正
 
 #### 実装内容
 
