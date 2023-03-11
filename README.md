@@ -69,7 +69,7 @@ GitHub | GitHub Actions | Terraform | NewRelic | Fastly | ecspresso | lambroll
 また､技術的な情報発信を会社が運営しているブログ上で行いました｡インターネットに知識を還元することはもちろん､自分自身や会社の開発組織の価値向上につながると肌で感じることができました｡
 
 ## 開発実績
-### Fastly lmage Optimizerを利用したサムネイル画像配信基盤作成
+### Fastly lmage Optimizerを利用したWebP, AVIFでのサムネイル画像配信基盤作成
 #### 公開エントリ
  - [AVIF・WebPでサムネイル画像を配信して､ブラウザでのパフォーマンスを大幅に改善した話](https://developers.prtimes.jp/2023/03/02/use_avif_and_webp_for_story_thumbnail_images/)
 
@@ -82,6 +82,38 @@ GitHub | GitHub Actions | Terraform | NewRelic | Fastly | ecspresso | lambroll
 Fastly Serviceの作成と設定･Image Optimizerの設定値の決定･PHPアプリケーションコードの修正
 
 #### 実装内容
+Image Optimizerを使用したサムネイル配信画像基盤導入のきっかけは､担当サービスのブラウザ上でのパフォーマンスが悪い事が挙げられる｡Lighthouseを使って計測したところ､
+ - mobileのPerfomanceの項目が25
+ - DesktopのPerfomanceの項目が64
+
+であった｡ボトルネックとなっている理由を見ていくと､サムネイル画像で使っているJPEGやPNGといった画像フォーマットよりも､WebPやAVIFという新しい高圧縮の画像フォーマットを使用したほうが良いことがわかった｡
+
+古いサムネイル画像は､ユーザーにアップロードしてもらったオリジナル画像から､3枚の大きさ別(width200, 400,800)の画像を生成して配信していたが､新しいサムネイル配信基盤ではかなり大きい画像一枚だけを生成する方式に変更した｡FastlyのImage Optimizerでは､Originから受け取った画像のりサイズや変換を動的に行うことができるため､ある程度大きな一枚だけを作るだけで良いためである｡
+
+ユーザーごとに､
+ - AVIF対応ブラウザにはAVIFを返す
+ - AVIF非対応かつWebP対応ブラウザにはWebPを返す
+ - AVIF・WebPともに非対応ブラウザにはJPEGを返す
+
+といった､柔軟なサムネイル画像配信が行えるように､VCLのカスタマイズも行った｡詳細は公開エントリ(開発者ブログ)に記載してある｡
+
+キャッシュのパージを個別の画像ごとに行うことができるように､アップロードするサムネイル画像にはSurrogateKeyの付与もおこなった｡これにより､一括のCDNキャッシュパージ以外にも柔軟な対応が行える｡
+
+結果として､Lighthouseの結果が､
+ - mobileのPerfomanceの項目が66
+ - DesktopのPerfomanceの項目が99
+
+まで向上した｡
+AVIFを導入することにより､画像の容量を
+ - 改善前 → content-length: 642954
+ - 改善後 → content-length: 23141
+
+まで圧縮できた画像もあった｡
+
+また､いままでのサムネイル画像よりも大きなサイズで画像をレスポンスするようにしたため､画像の容量が減っているにも関わらず､画像の画質(見た目)も向上している｡
+
+#### 使用技術
+PHP | Laravel | Fastly(VCL変更も含む) | Image Optimizer | S3 | Terraform 
 
 
 ### Webアプリケーションのリアーキテクチャと運用(〜現在)
