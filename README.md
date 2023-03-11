@@ -70,8 +70,17 @@ GitHub | GitHub Actions | Terraform | NewRelic | Fastly | ecspresso | lambroll
 
 ## 開発実績
 ### Fastly lmage Optimizerを利用したサムネイル画像配信基盤作成
+#### 公開エントリ
+ - [AVIF・WebPでサムネイル画像を配信して､ブラウザでのパフォーマンスを大幅に改善した話](https://developers.prtimes.jp/2023/03/02/use_avif_and_webp_for_story_thumbnail_images/)
+
 #### 概要
-後日追記予定
+担当サービスでブラウザ表示の際にパフォーマンス上の問題点があった｡主たるボトルネックになっていたのはサムネイル画像がJPEGやPNGといった古い画像フォーマットを使用していたことだった｡
+
+#### 担当
+Fastly Serviceの作成と設定･Image Optimizerの設定値の決定･PHPコードの修正
+
+#### 実装内容
+
 
 ### Webアプリケーションのリアーキテクチャと運用(〜現在)
 #### 公開エントリ
