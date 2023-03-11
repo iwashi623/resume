@@ -74,7 +74,7 @@ GitHub | GitHub Actions | Terraform | NewRelic | Fastly | ecspresso | lambroll
  - [AVIF・WebPでサムネイル画像を配信して､ブラウザでのパフォーマンスを大幅に改善した話](https://developers.prtimes.jp/2023/03/02/use_avif_and_webp_for_story_thumbnail_images/)
 
 #### 概要
-担当サービスでブラウザ表示の際にパフォーマンス上の問題点があった｡主たるボトルネックになっていたのはサムネイル画像がJPEGやPNGといった古い画像フォーマットを使用していたことだった｡[社内で採用実績のある](https://developers.prtimes.jp/2022/02/24/press_release_image_optimization/)､Fastlyの[Image Optimizer](https://www.fastly.com/jp/products/image-optimization)を使用すれば､こちらのボトルネックは解消できることがわかっていたため導入した｡
+担当サービスでブラウザ表示の際にパフォーマンス上の問題点があった｡主たるボトルネックになっていたのはサムネイル画像がJPEGやPNGといった古い画像フォーマットを使用していたことだった｡[社内で採用実績のある](https://developers.prtimes.jp/2022/02/24/press_release_image_optimization/)､Fastlyの[Image Optimizer](https://www.fastly.com/jp/products/image-optimization)を使用して新しい画像フォーマットへ変換した後配信すれば､こちらのボトルネックは解消できることがわかっていたため導入した｡
 
 また､WebPだけではなくAVIFという更に新しい画像フォーマットも導入して､Fastly Service上でVCLを使って柔軟に画像配信を行える基盤を整えた｡
 
@@ -88,7 +88,7 @@ Image Optimizerを使用したサムネイル配信画像基盤導入のきっ�
 
 であった｡ボトルネックとなっている理由を見ていくと､サムネイル画像で使っているJPEGやPNGといった画像フォーマットよりも､WebPやAVIFという新しい高圧縮の画像フォーマットを使用したほうが良いことがわかった｡
 
-古いサムネイル画像は､ユーザーにアップロードしてもらったオリジナル画像から､3枚の大きさ別(width200, 400,800)の画像を生成して配信していたが､新しいサムネイル配信基盤ではかなり大きい画像一枚だけを生成する方式に変更した｡FastlyのImage Optimizerでは､Originから受け取った画像のりサイズや変換を動的に行うことができるため､ある程度大きな一枚だけを作るだけで良いためである｡
+古いサムネイル画像は､ユーザーにアップロードしてもらったオリジナル画像から､3枚の大きさ別(width200, 400,800)の画像を生成して配信していた｡新しいサムネイル配信基盤ではかなり大きい画像一枚だけを生成する方式に変更した｡FastlyのImage Optimizerでは､Originから受け取った画像のりサイズや変換を動的に行うことができるため､ある程度大きな一枚だけを作るだけで良いためである｡
 
 ユーザーごとに､
  - AVIF対応ブラウザにはAVIFを返す
