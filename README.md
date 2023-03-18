@@ -23,7 +23,7 @@ EC2 | ECS | Fargate | ECR | Lambda | ALB | VPC | VPC Peering | IAM | CloudFront 
 ### その他
 GitHub | GitHub Actions | Terraform | NewRelic | Fastly | ecspresso | lambroll
 
-### ライセンス
+### 資格等
  - AWS Certified Solutions Architect – Associate（2021/08）
  - AWS Certified Developer - Associate（2022/03）
  - AWS Certified SysOps Administrator - Associate（2022/08）
