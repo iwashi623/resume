@@ -14,7 +14,7 @@
 ### 言語
 PHP | Ruby | Go
 
-### フレームワーク、Middleware、Hardware
+### フレームワーク、Middleware
 Laravel | Ruby on Rails | MySQL | PostgreSQL | nginx
 
 ### AWS
