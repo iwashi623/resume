@@ -197,7 +197,7 @@ Python | Go | Lambda | lambroll | S3 | KMS | Aurora MySQL | Glue | EventBridge |
    - [登壇資料](https://speakerdeck.com/iwashi623/aa-wo-ranoecs-1)
    - [映像](https://www.youtube.com/watch?v=wFjGeFafagU)
 
- - PHPカンファレンス福岡 2023 登壇
+ - [PHPカンファレンス福岡 2023 登壇](https://fortee.jp/phpconfukuoka-2023/proposal/833744fc-9816-4a3a-ab56-a82e964b97fa)
    - [登壇資料](https://speakerdeck.com/iwashi623/phpermoiacwoshi-ou-17nian-wu-noinhurawoterraformnida-yi-xing)
    - [映像(後日追加予定)]()
 
@@ -236,6 +236,10 @@ Python | Go | Lambda | lambroll | S3 | KMS | Aurora MySQL | Glue | EventBridge |
  #### 作成背景
  [こちら](https://speakerdeck.com/iwashi623/phpermoiacwoshi-ou-17nian-wu-noinhurawoterraformnida-yi-xing?slide=57)にあるように、Terraformは差分ができると誰も触りたくなくなるという課題感があった。
  
- 上記の課題を解決するためには、本来であればCIツールを使ってPlanの定期実行を行いたい。
+ 上記の課題を解決するためには、本来であればCIツールなどを使ってPlanの定期実行を行って、
+  - 定期的に差分を検知
+  - 差分を解消するPR作成
 
- しかしながら、Terraformのディレクトリ構成は組織によって千差万別で、stateファイルの量もそれぞれ異なる。そんな時、シェルスクリプトを書いてCIを無理やり作るのもエンジニアの腕の見せ所ではあるが、terrapoliceを利用すれば設定ファイルに書いたディレクトリ全てで`terraform plan`を実行できるので、難しいシェルスクリプトを書く必要がなく、planの定期実行が行えるようになる。
+というフローを組織内に作る必要がある。
+
+ しかしながら、Terraformのディレクトリ構成は組織によって千差万別で、stateファイルの量もそれぞれ異なる。そんな時、シェルスクリプトを書いてCIを無理やり作るのもエンジニアの腕の見せ所ではあるが、terrapoliceを利用すれば設定ファイルに書いたディレクトリ全てで`terraform plan`を実行できる。結果として難しいシェルスクリプトを書く必要がなく、planの定期実行が行えるようになる。
