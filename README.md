@@ -197,6 +197,10 @@ Python | Go | Lambda | lambroll | S3 | KMS | Aurora MySQL | Glue | EventBridge |
    - [登壇資料](https://speakerdeck.com/iwashi623/aa-wo-ranoecs-1)
    - [映像](https://www.youtube.com/watch?v=wFjGeFafagU)
 
+ - PHPカンファレンス福岡 2023 登壇
+   - [登壇資料](https://speakerdeck.com/iwashi623/phpermoiacwoshi-ou-17nian-wu-noinhurawoterraformnida-yi-xing)
+   - [映像(後日追加予定)]()
+
 ### 社外プロジェクト(OSSなど)
 特になし
 
@@ -223,3 +227,15 @@ Python | Go | Lambda | lambroll | S3 | KMS | Aurora MySQL | Glue | EventBridge |
  - スクリプトはリポジトリ管理して`aws s3`コマンド
 
 という運用も悪くないかと思ったが､スクリプトファイルとJobの設定ファイルを近く(同じリポジトリ)におくという運用にもメリットを感じたので製作した｡言語選定については､勉強したかったという理由とバイナリ配布が容易である点からGoを選択した｡
+
+### terrapolice（作成途中）
+ - リポジトリ：https://github.com/iwashi623/terrapolice
+ - 機能：[README](https://github.com/iwashi623/terrapolice/blob/main/README.md)
+ - 概要： Terraform Planを簡単に一気に通すためのCLIツール
+
+ #### 作成背景
+ [こちら](https://speakerdeck.com/iwashi623/phpermoiacwoshi-ou-17nian-wu-noinhurawoterraformnida-yi-xing?slide=57)にあるように、Terraformは差分ができると誰も触りたくなくなるという課題感があった。
+ 
+ 上記の課題を解決するためには、本来であればCIツールを使ってPlanの定期実行を行いたい。
+
+ しかしながら、Terraformのディレクトリ構成は組織によって千差万別で、stateファイルの量もそれぞれ異なる。そんな時、シェルスクリプトを書いてCIを無理やり作るのもエンジニアの腕の見せ所ではあるが、terrapoliceを利用すれば設定ファイルに書いたディレクトリ全てで`terraform plan`を実行できるので、難しいシェルスクリプトを書く必要がなく、planの定期実行が行えるようになる。
