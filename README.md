@@ -28,6 +28,7 @@ GitHub | GitHub Actions | Terraform | NewRelic | Fastly | ecspresso | lambroll
  - AWS Certified Developer - Associate（2022/03）
  - AWS Certified SysOps Administrator - Associate（2022/08）
  - AWS Certified Solutions Architect - Professional（2022/10）
+ - GCP Associate Cloud Engineer（2023/11）
 
 ## 言語
 - 日本語
