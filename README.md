@@ -20,6 +20,9 @@ Laravel | Ruby on Rails | MySQL | PostgreSQL | nginx
 ### AWS
 EC2 | ECS | Fargate | ECR | Lambda | ALB | VPC | VPC Peering | IAM | CloudFront | Route53 | RDS(MySQL | PostgreSQL) | Aurora | S3 | ElastiCache(Redis) | SQS | SNS | Chatbot | Parameter Store | Glue | EventBridge | CloudWatch | DirectConnect
 
+### GCP
+BigQuery 
+
 ### その他
 GitHub | GitHub Actions | Terraform | NewRelic | Fastly | ecspresso | lambroll
 
