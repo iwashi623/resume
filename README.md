@@ -40,7 +40,7 @@ GitHub | GitHub Actions | Terraform | NewRelic | Fastly | ecspresso | lambroll
   - 読み書きレベル
 
 ## バリューを発揮しやすい業務
- - PHPやRubyを使用したサーバーサイドのWebアプリケーション・API開発
+ - PHPやGoを使用したサーバーサイドのWebアプリケーション・API開発
  - CI/CDパイプラインの構築や改善
  - クラウドサービスを使ったアーキテクチャ設計
  - クラウドサービスのインフラ構築･環境のコード化
