@@ -1,9 +1,10 @@
 # 職務経歴書
 
 ## 基本情報
-- Name: 岩下 拳勝
-- Twitter: [@iwashi623](https://twitter.com/iwashi623)
-- PR TIMES開発者プログ [公開エントリ](https://developers.prtimes.jp/author/kenshoiwashita/)
+- 岩下 拳勝(@iwashi623)
+- [Twitter](https://twitter.com/iwashi623)
+- [PR TIMES開発者プログ](https://developers.prtimes.jp/author/kenshoiwashita/)
+- [バイセル Tech Blog](https://tech.buysell-technologies.com/archive/category/iwashi623)
 - [Wantedly](https://www.wantedly.com/id/kensho_iwashita)
 - [Speaker Deck](https://speakerdeck.com/iwashi623)
 - [Qiita](https://qiita.com/iwashi623)
@@ -52,13 +53,24 @@ GitHub | GitHub Actions | Terraform | NewRelic | Fastly | ecspresso | lambroll
 一方で､型にはまった作業や踏襲されてきた歴史などを無心で重んじるのが苦手で､そういった状況に陥るとバリューの低下やメンタルの不健康を感じます｡
 
 ## 興味・関心
-ソフトウェア開発､とりわけWeb業界は知識の幅が広く､執筆時点で(2023/3 現在)はすべての分野を一通り触ったとは全く言えない状況です｡そのため前述したような性格でも毎日楽しく学習ができています｡エンジニアの業務は十分知的好奇心を刺激されて楽しく働くことができているため､しばらくはエンジニアとしてキャリアを築いていきたいです｡
+ソフトウェア開発､とりわけWeb業界は知識の幅が広く､執筆時点で(2023/12 現在)はすべての分野を一通り触ったとは全く言えない状況です｡そのため前述したような性格でも毎日楽しく学習ができています｡エンジニアの業務は十分知的好奇心を刺激されて楽しく働くことができているため､しばらくはエンジニアとしてキャリアを築いていきたいです｡
 
 エンジニアの中では､これまでのキャリアで主にサーバーサイドやクラウドサービスを利用したインフラ構築を担当してきました｡ただ､そこにこだわりがあるわけではなく､むしろ幅を更に広げていきたいと考えています｡GoやKotlinなどの静的型付け言語やTypeScrip+FWを使ったフロントエンド開発､ネイティブアプリケーション開発にも興味があります｡
 
+個人的な趣味としては､[ISUCON](https://isucon.net/)にハマっており､来年(2024)にもし開催されたらいい成績を残せるように準備中｡
+
 ## 職務経歴
 ### 2023/07 - 現職 : 株式会社BuySell Technologies
- - 詳細は後日追記
+#### 職務内容
+ - リユースプラットフォーム[Cosmos](https://speakerdeck.com/buyselltechnologies/enziniacai-yong-buysell-technologieshui-she-shuo-ming-zi-liao?slide=26)の店舗買取アプリStoreを担当
+ - 担当領域はバックエンド･インフラ周り｡
+   - Golangで作成されたGraphQLサーバー(gqlgen)を使っている｡
+   - デプロイ先はCloud Run
+   - DBにはCloud SQL(PostgreSQL)
+ - 主にグループ内の会社の方が使うアプリケーションだったため､直接現場へアプリへのフィードバックや要望を聞ける環境だった｡ただし､現場の意見をそのまますべて取り入れているとSaasとして機能しないものが完成するため､現場から頂いた意見をどうやって機能に落とし込むか?を大切にしていた｡
+ - 初めての転職だったこともあり､ジョイン当初は技術的な挑戦はあまりできなかった｡
+   - しかしながら前職で取り組んでいた､「MTGの録画文化」や「DMでのコミュニケーションを減らす」などの文化を取り組みをチームの中に吹き込んだ｡
+   - 個人では早くキャッチアップをするためにGCPの認定資格を取得した｡資格取得は最終的なGoalではないが､手っ取り早くGCP全体を見渡すためのSmall Goalとして設定した｡
 
 ### 2021/04 - 2023/07 : 株式会社PR TIMES
 #### 職務内容
@@ -67,13 +79,11 @@ GitHub | GitHub Actions | Terraform | NewRelic | Fastly | ecspresso | lambroll
  おもにアプリケーションのリアーキテクチャや開発環境改善､CDNの導入などを担当した｡
  - PR TIMES AWS移行プロジェクトのメンバー｡インフラのコード化や関連サービスのDBの接続先変更(VPC Peering､DirectConnectの設定)を担当｡
 #### 職務の中で学んだことや得られた知識・スキルなど
-技術的な内容は下記の開発実績をご参照ください｡ここではその他の経験を述べます｡
+チームメンバーは4〜6人の少数チームだった｡その中で開発リーダーとして工数管理や実装優先度の決定をしていた｡手を動かしてコードを書く以外の主な業務は､ビジネスサイドの要望に対して､開発をすすめるにあたっての要件の切り出しやDesing Docの作成を担当した｡
 
-チームメンバーは4〜6人の少数チームでしたが、開発リーダーとして工数管理や実装優先度の決定をしていました｡手を動かしてコードを書く以外の主な業務は､ビジネスサイドの要望に対して､開発をすすめるにあたっての要件の切り出しやDesing Docの作成です｡
+担当しているプロダクトがユーザーの少ない新規サービスで､さらに開発がなかなか進んでいない状況だった｡そこで最小工数でできるだけ早くリリースして､社内の信頼を勝ち取ることを目標にしていた｡
 
-担当しているプロダクトがユーザーの少ない新規サービスで､さらに開発がなかなか進んでいない状況でした｡そこで最小工数でできるだけ早くリリースして､社内の信頼を勝ち取ることを目標にしていました｡
-
-また､技術的な情報発信を会社が運営しているブログ上で行いました｡インターネットに知識を還元することはもちろん､自分自身や会社の開発組織の価値向上につながると肌で感じることができました｡
+また､技術的な情報発信を会社が運営しているブログ上で行いました｡インターネットに知識を還元することはもちろん､自分自身や会社の開発組織の価値向上につながると肌で感じることができた｡
 
 ## 開発実績
 ### Fastly lmage Optimizerを利用したWebP, AVIFでのサムネイル画像配信基盤作成
@@ -206,7 +216,7 @@ Python | Go | Lambda | lambroll | S3 | KMS | Aurora MySQL | Glue | EventBridge |
 
  - [PHPカンファレンス福岡 2023 登壇](https://fortee.jp/phpconfukuoka-2023/proposal/833744fc-9816-4a3a-ab56-a82e964b97fa)
    - [登壇資料](https://speakerdeck.com/iwashi623/phpermoiacwoshi-ou-17nian-wu-noinhurawoterraformnida-yi-xing)
-   - [映像(後日追加予定)]()
+   - [映像](https://www.youtube.com/watch?v=xzt1QDk1hYQ)
 
 ### 社外プロジェクト(OSSなど)
 特になし
@@ -235,7 +245,7 @@ Python | Go | Lambda | lambroll | S3 | KMS | Aurora MySQL | Glue | EventBridge |
 
 という運用も悪くないかと思ったが､スクリプトファイルとJobの設定ファイルを近く(同じリポジトリ)におくという運用にもメリットを感じたので製作した｡言語選定については､勉強したかったという理由とバイナリ配布が容易である点からGoを選択した｡
 
-### terrapolice（作成途中）
+### terrapolice
  - リポジトリ：https://github.com/iwashi623/terrapolice
  - 機能：[README](https://github.com/iwashi623/terrapolice/blob/main/README.md)
  - 概要： Terraform Planを簡単に一気に通すためのCLIツール
