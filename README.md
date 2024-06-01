@@ -115,8 +115,9 @@ GitHub | GitHub Actions | Terraform | NewRelic | Fastly | ecspresso | lambroll
 
 JobのCLIアプリケーションは､[cobra](https://github.com/spf13/cobra)を使用して作成して､サブコマンドをJob実行時に渡すことで任意の振る舞いができるになっている｡
 
-CLIアプリケーションはDocker化されているため､アプリケーションをBuildしてGCPのArtifact RegistryにPushするためのCIも作成した｡
+CLIアプリケーションはDocker化されているため､アプリケーションをBuildしてGCPのArtifact RegistryにPushするためのパイプラインも作成した｡
 本番実行前に､Cloud SQLのスナップショットから作成したDBを立てて､そこでリハーサルを行い､負荷的に問題がないことを確認した｡
+インフラはすべてTerraform化されている｡
 
 #### 使用技術
 Go | [Bun(ORM)](https://bun.uptrace.dev/) | Cloud Run Jobs | Cloud SQL | Secret Manager | Terraform | GitHub Actions
