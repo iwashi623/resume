@@ -64,8 +64,8 @@ GitHub | GitHub Actions | Terraform | NewRelic | Fastly | ecspresso | lambroll
 #### 職務内容
  - リユースプラットフォーム[Cosmos](https://speakerdeck.com/buyselltechnologies/enziniacai-yong-buysell-technologieshui-she-shuo-ming-zi-liao?slide=26)の店舗買取アプリStoreを担当
  - 担当領域はバックエンド･インフラ周り｡
-   - Golangで作成されたGraphQLサーバー(gqlgen)を使っている｡
-   - デプロイ先はCloud Run
+   - Golangで作成されたGraphQLサーバー(gqlgen)を使っている｡簡単なCRUD操作は[Hasura]()のクエリを使用して､複雑なアプリケーションロジックはSidecarに拡張Query､Mutationを作成している｡
+   - アプリケーションのデプロイ先はCloud Run
    - DBにはCloud SQL(PostgreSQL)
  - 主にグループ内の会社の方が使うアプリケーションだったため､直接現場へアプリへのフィードバックや要望を聞ける環境だった｡ただし､現場の意見をそのまますべて取り入れているとSaasとして機能しないものが完成するため､現場から頂いた意見をどうやって機能に落とし込むか?を大切にしていた｡
  - 初めての転職だったこともあり､ジョイン当初は技術的な挑戦はあまりできなかった｡
@@ -86,6 +86,42 @@ GitHub | GitHub Actions | Terraform | NewRelic | Fastly | ecspresso | lambroll
 また､技術的な情報発信を会社が運営しているブログ上で行いました｡インターネットに知識を還元することはもちろん､自分自身や会社の開発組織の価値向上につながると肌で感じることができた｡
 
 ## 開発実績
+### CloudRun Jobを作成したDBと接続した基盤作成
+#### 概要
+背景として､提供している店舗買取アプリケーションで､締結済み契約で本来必要なデータで不足しているものがあった｡アプリケーションは既に運用に乗っており､
+ - これから契約されるデータ
+ - これまでの契約のデータ
+
+に対してデータを作る処理が必要になった｡
+これからの契約データに関しては､契約が締結されるタイミングでデータをINSERTする処理をすれば問題なく､そちらは複雑なことはせずAPIを作成した｡
+一方で､これまでの契約データに対応するデータ作成は､既存アプリケーションの動きとは別にデータをINSERTする必要がある｡
+
+担当していたアプリケーションに､任意の作業Jobを実行するための､基盤がなかったため､その基盤を作成して､Jobを実行することで既に締結済みの契約に関してもデータを作成することができた｡
+
+#### 担当
+ - 必要なデータを作るタイミングの要件定義､及び調整
+ - データのテーブル設計
+ - APIの機能改修
+ - 既に契約締結済みのデータに対して､必要なデータを作成するため方法を検討･設計
+ - Cloud Run Jobsの基盤作成
+ - Cloud Run Jobsで実行されるCLIアプリケーションの作成
+ - CI/CDパイプラインの構築
+
+#### 実装内容
+最小工数で実装するのであれば､既に動作しているCloud Runのアプリケーション上に､単発のAPIエンドポイントを生やせば対応できた｡しかしながら､アプリケーション上で実行すると､仮に負荷が高いJobだったときに全体に影響が出るかもしれない懸念があった｡
+
+元々､アプリケーションとは別にJobを実行する基盤がなかったため､今回アプリケーションとは切り離したJobを作ることを選択した｡
+インフラ基盤にはCloud Run Jobsを選択した｡理由は､Cloud Runを普段からチームで使用しており､他の選択肢を取るよりもキャッチアップが容易であったことが挙げられる｡
+
+JobのCLIアプリケーションは､[cobra](https://github.com/spf13/cobra)を使用して作成して､サブコマンドをJob実行時に渡すことで任意の振る舞いができるになっている｡
+
+CLIアプリケーションはDocker化されているため､アプリケーションをBuildしてGCPのArtifact RegistryにPushするためのCIも作成した｡
+本番実行前に､Cloud SQLのスナップショットから作成したDBを立てて､そこでリハーサルを行い､負荷的に問題がないことを確認した｡
+
+#### 使用技術
+Go | [Bun(ORM)](https://bun.uptrace.dev/) | Cloud Run Jobs | Cloud SQL | Secret Manager | Terraform | GitHub Actions
+
+
 ### Fastly lmage Optimizerを利用したWebP, AVIFでのサムネイル画像配信基盤作成
 #### 公開エントリ
  - [AVIF・WebPでサムネイル画像を配信して､ブラウザでのパフォーマンスを大幅に改善した話](https://developers.prtimes.jp/2023/03/02/use_avif_and_webp_for_story_thumbnail_images/)
