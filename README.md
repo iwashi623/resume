@@ -62,15 +62,14 @@ GitHub | GitHub Actions | Terraform | NewRelic | Fastly | ecspresso | lambroll
 ## 職務経歴
 ### 2023/07 - 現職 : 株式会社BuySell Technologies
 #### 職務内容
- - リユースプラットフォーム[Cosmos](https://speakerdeck.com/buyselltechnologies/enziniacai-yong-buysell-technologieshui-she-shuo-ming-zi-liao?slide=26)の店舗買取アプリStoreを担当
+ - リユースプラットフォーム[Cosmos](https://speakerdeck.com/buyselltechnologies/enziniacai-yong-buysell-technologieshui-she-shuo-ming-zi-liao?slide=26)の店舗買取アプリ**Store**･訪問買い取り査定アプリ**Visit**を担当
  - 担当領域はバックエンド･インフラ周り｡
-   - Golangで作成されたGraphQLサーバー(gqlgen)を使っている｡簡単なCRUD操作は[Hasura](https://hasura.io/)のクエリを使用して､複雑なアプリケーションロジックはSidecarに拡張Query､Mutationを作成している｡
+   - Golangで作成されたGraphQLサーバー(gqlgen)を使っている｡[Hasura](https://hasura.io/)のクエリで補えない複雑なロジックはsidecarと呼ばれる別アプリケーションで定義している｡
    - アプリケーションのデプロイ先はCloud Run
-   - DBにはCloud SQL(PostgreSQL)
+   - DBにはCloud SQL(PostgreSQL)とCloud Spanner
  - 主にグループ内の会社の方が使うアプリケーションだったため､直接現場へアプリへのフィードバックや要望を聞ける環境だった｡ただし､現場の意見をそのまますべて取り入れているとSaasとして機能しないものが完成するため､現場から頂いた意見をどうやって機能に落とし込むか?を大切にしていた｡
  - 初めての転職だったこともあり､ジョイン当初は技術的な挑戦はあまりできなかった｡
    - しかしながら前職で取り組んでいた､「MTGの録画文化」や「DMでのコミュニケーションを減らす」などの文化を取り組みをチームの中に吹き込んだ｡
-   - 個人では早くキャッチアップをするためにGCPの認定資格を取得した｡資格取得は最終的なGoalではないが､手っ取り早くGCP全体を見渡すためのSmall Goalとして設定した｡
 
 ### 2021/04 - 2023/07 : 株式会社PR TIMES
 #### 職務内容
