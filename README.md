@@ -246,7 +246,7 @@ AVIFを導入することにより､画像の容量を
 PHP | Laravel | Fastly(VCL変更も含む) | Image Optimizer | S3 | Terraform 
 
 
-### Webアプリケーションのリアーキテクチャと運用(〜現在)
+### Webアプリケーションのリアーキテクチャと運用(〜2023/07)
 #### 公開エントリ
  - [PR TIMES STORYを別リポジトリに移植した話](https://developers.prtimes.jp/2022/10/05/transportation_story_program/)
 
