@@ -86,6 +86,8 @@ GitHub | GitHub Actions | Terraform | NewRelic | Fastly | ecspresso | lambroll
 
 ## 開発実績
 ### Terraformリポジトリの構成変更
+#### 公開エントリ
+ - https://tech.buysell-technologies.com/entry/modify_terrafrom_architecture
 #### 概要
 Terraformのコードが複数人で作業をできる環境になっておらず､またデプロイのフローも非常に煩雑なものになっていた｡
 それを､誰でも作成､リリースができる状況を作って､チームの中でIaCでクラウドリソースが作られることが当たり前の状況を作った｡
