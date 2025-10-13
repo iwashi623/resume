@@ -49,8 +49,6 @@ GitHub | GitHub Actions | Terraform | NewRelic | Fastly | ecspresso | lambroll
 
 ## 価値観
 なにか一つのことに集中して数年単位で何かを成し遂げるよりも､多くの失敗を重ねながらたくさんのチャレンジをすることに価値を感じる性格です｡
-[16Personalities性格診断テスト](https://www.16personalities.com/ja)の結果は[ENTP](https://www.16personalities.com/ja/entp%E5%9E%8B%E3%81%AE%E6%80%A7%E6%A0%BC)です｡
-
 一方で､型にはまった作業や踏襲されてきた歴史などを無心で重んじるのが苦手で､そういった状況に陥るとバリューの低下やメンタルの不健康を感じます｡
 
 ## 興味・関心
