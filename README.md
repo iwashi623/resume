@@ -33,6 +33,7 @@ GitHub | GitHub Actions | Terraform | NewRelic | Fastly | ecspresso | lambroll
  - AWS Certified SysOps Administrator - Associate（2022/08）
  - AWS Certified Solutions Architect - Professional（2022/10）
  - GCP Associate Cloud Engineer（2023/11）
+ - 基本情報技術者 (2025/02)
 
 ## 言語
 - 日本語
@@ -325,7 +326,9 @@ Python | Go | Lambda | lambroll | S3 | KMS | Aurora MySQL | Glue | EventBridge |
 
 ## 課外活動
 ### 登壇など
- - PHPカンファレンス2022 スポンサーLT登壇
+勉強会では定期にいくつか登壇しています｡ここには大きめのカンファレンスのみ記載します｡(スライドはSpeakerDeckに)
+
+ - PHPカンファレンス2022 LT登壇
    - [登壇資料](https://speakerdeck.com/iwashi623/aa-wo-ranoecs-1)
    - [映像](https://www.youtube.com/watch?v=wFjGeFafagU)
 
@@ -334,31 +337,14 @@ Python | Go | Lambda | lambroll | S3 | KMS | Aurora MySQL | Glue | EventBridge |
    - [映像](https://www.youtube.com/watch?v=xzt1QDk1hYQ)
 
 ### 社外プロジェクト(OSSなど)
-特になし
+ - [YAPC2025 Fukuoka](https://yapcjapan.org/2025fukuoka/)
+   - ボランティアスタッフ
 
 ## 個人開発
-### gjobctl
- - リポジトリ: https://github.com/iwashi623/gjobctl
- - 機能: [README](https://github.com/iwashi623/gjobctl/blob/main/README.md)
- - 概要: Glue Jobを作成･管理をするときにほしいAPIをラップしたツール｡
-
-#### 作成背景
-1. スクリプトをリポジトリで管理したいこと
-2. Jobをコンソールから作成するのが手間だったこと
-
-があげられる｡
-
-1は自身がGlue Jobのスクリプトをデバッグのために編集を加えたり･戻する際に感じた課題感である｡リポジトリ管理がされておらず､現状の実装が何を意図して実装されたのかわからなくなることが多かった｡
-
-これはGitHubのリポジトリでスクリプトを管理することで解決できる｡GitHubでスクリプトを管理するようになると､当然GitHub Actionsを使用して自動デプロイもできたら嬉しいという要望も出てくる｡これだけであればGitHub Actionsで`aws s3`コマンドを叩けば実現できる｡
-
-ただ､別件で2も常々思っていた｡ソースデータのテーブル･カラムが追加されるたびに､AWSのコンソールに行って同じような設定のJobをポチポチ作るのも､一回一回はそれほど手間でもないが積み重なると辛い｡
-
-そこで､スクリプトのデプロイとJobの作成･更新ができるツールを作成した｡
- - Jobの管理はTerraform
- - スクリプトはリポジトリ管理して`aws s3`コマンド
-
-という運用も悪くないかと思ったが､スクリプトファイルとJobの設定ファイルを近く(同じリポジトリ)におくという運用にもメリットを感じたので製作した｡言語選定については､勉強したかったという理由とバイナリ配布が容易である点からGoを選択した｡
+### dekopin
+ - リポジトリ：https://github.com/iwashi623/dekopin
+ - 機能：[README](https://github.com/iwashi623/dekopin?tab=readme-ov-file#dekopin)
+ - 概要： Cloud Runのトラフィック変更を手元で行うためのツール
 
 ### terrapolice
  - リポジトリ：https://github.com/iwashi623/terrapolice
