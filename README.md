@@ -13,7 +13,7 @@
 
 ## スキル
 ### 言語
-PHP | Ruby | Go
+PHP | Ruby | Go | Python | TypeScript
 
 ### フレームワーク、Middleware
 Laravel | Ruby on Rails | MySQL | PostgreSQL | nginx
@@ -59,7 +59,12 @@ GitHub | GitHub Actions | Terraform | NewRelic | Fastly | ecspresso | lambroll
 個人的な趣味としては､[ISUCON](https://isucon.net/)にハマっており､次回の開催がされたらいい成績を残せるように準備中です｡
 
 ## 職務経歴
-### 2023/07 - 現職 : 株式会社BuySell Technologies
+### 2026/03 - 現職 : 株式会社カケハシ
+#### 職務内容
+ - 薬局と患者をつなぐ[Pocket Musubi](https://apps.apple.com/jp/app/id1594523400)と､それに付随するアプリケーションの開発を担当｡
+ - 主にバックエンドをPythonで開発している｡フロントエンドではTypeScriptも書く｡
+
+### 2023/07 - 2026/02 : 株式会社BuySell Technologies
 #### 職務内容
  - リユースプラットフォーム[Cosmos](https://speakerdeck.com/buyselltechnologies/enziniacai-yong-buysell-technologieshui-she-shuo-ming-zi-liao?slide=26)の店舗買取アプリ**Store**･訪問買い取り査定アプリ**Visit**を担当
  - 担当領域はバックエンド･インフラ周り｡
@@ -69,6 +74,9 @@ GitHub | GitHub Actions | Terraform | NewRelic | Fastly | ecspresso | lambroll
  - 主にグループ内の会社の方が使うアプリケーションだったため､直接現場へアプリへのフィードバックや要望を聞ける環境だった｡ただし､現場の意見をそのまますべて取り入れているとSaasとして機能しないものが完成するため､現場から頂いた意見をどうやって機能に落とし込むか?を大切にしていた｡
  - 初めての転職だったこともあり､ジョイン当初は技術的な挑戦はあまりできなかった｡
    - しかしながら前職で取り組んでいた､「MTGの録画文化」や「DMでのコミュニケーションを減らす」などの文化を取り組みをチームの中に吹き込んだ｡
+ - 2025年からは､社内の基幹システムのマイクロサービス(Ruby on Rails･k8s)を､新しい基盤(Go･Cloud Run)へ載せ替えるプロジェクトを担当した｡
+   - OpenAPIの定義が3万行あり､サービス間の通信にはgRPCを使っていた｡マスタデータも数千件あった｡
+   - 終わらせることを第一に､載せ替え先ではできるだけ既存のインフラを使い回すと決め続け､保守のコストと初期の工数を減らした｡
 
 ### 2021/04 - 2023/07 : 株式会社PR TIMES
 #### 職務内容
@@ -323,6 +331,32 @@ BigQueryへのデータ転送の自動化･DBのスナップショット取得�
 Python | Go | Lambda | lambroll | S3 | KMS | Aurora MySQL | Glue | EventBridge | CloudWatch | BigQuery
 
 ## 課外活動
+### 大学院
+#### 東京都立産業技術大学院大学(AIIT) 情報アーキテクチャコース
+2025/04入学､2027/03修了予定｡働きながら通う社会人大学院で､入学した理由は[note](https://note.com/iwashi623/n/n3660b4bcba93)に書いた｡
+
+##### PBL(2026年度)
+PBL(Project Based Learning)は､学生数人のチームで1年間のプロジェクトに取り組む授業である｡6人のチームで､「エンジニア1人と生成AIは中小企業の武器になるか」をテーマに取り組んだ｡協力企業に入り込んで業務の課題を探し､解決するアプリを作って効果を確かめた｡テーマの元になる案は自分が出した｡
+
+自分は土木系の中小企業を担当し､企業とのやりとりの窓口としてヒアリングやデモを重ねた｡2026/10からは､この企業を担当するチームのリーダーを務めた｡
+
+###### 見積書への転記ツール(otenki)
+積算ソフトが出力したExcelを､企業の見積書と出来高調書のテンプレートへ自動で転記するWebアプリ｡ヒアリングで､この転記を手作業でしていることが業務の大きなボトルネックだと分かったため作った｡処理はすべてブラウザの中で行い､サーバーを持たない作りにした｡
+
+設計から実装･デプロイまで1人で担当し､ヒアリングからデモまでの総工数は約30時間だった｡
+
+使用技術: TypeScript | React | Vite | excelize(WASM) | Cloudflare Pages | Vitest
+
+###### 社内アプリの公開･管理基盤(apps-rack)
+非エンジニアの社員がClaudeとの会話で作ったアプリを､社内向けに公開し､一覧･管理できるようにする基盤｡作る人がClaude Codeのクラウドセッションでコードを書き､MCP経由で公開まで進められるようにした｡設計と実装の中心を担当した(インフラの土台はチームのメンバーが担当)｡
+
+ - MCPサーバーを実装し､Claudeからアプリ用のリポジトリ作成と公開を呼び出せるようにした｡リポジトリはGitHub Appで作り､作る人を書き込み権限付きで追加する仕組みにした｡
+ - 認証にはCognitoを使い､GoogleをIDプロバイダにした｡CognitoだけではClaudeのコネクタが求めるOAuthの仕様を満たせなかったため､足りない部分をAPI側で補った｡
+ - 静的アプリに加えて､DBやファイルを使う動的アプリも本番で公開できるところまで作った｡
+ - 開発の一部は､タスクを分けてClaude Codeの複数のセッションに並行で任せ､設計の判断とレビューは自分で行った｡
+
+使用技術: TypeScript | Hono | React | PostgreSQL | Amazon Cognito | AWS(EC2･CloudFront･S3) | Terraform | GitHub Actions | Coolify | Docker
+
 ### 登壇など
 勉強会では定期にいくつか登壇しています｡ここには大きめのカンファレンスのみ記載します｡(スライドはSpeakerDeckに)
 
